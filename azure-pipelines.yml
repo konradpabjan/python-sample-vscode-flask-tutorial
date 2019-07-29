@@ -38,6 +38,12 @@ steps:
     replaceExistingArchive: true
     verbose: # Optional
 
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)/Application$(Build.BuildId).zip'
+    ArtifactName: 'Zip'
+    publishLocation: 'Container'
+
 - task: AzureRMWebAppDeployment@4
   displayName: Azure App Service Deploy
   inputs:
